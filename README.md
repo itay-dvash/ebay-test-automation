@@ -81,33 +81,37 @@ Handles validations inside the shopping cart to ensure the logic worked correctl
 
 ## ⚙️ Prerequisites
 
-1. **Clone the Repository:**
+Assuming [Git](https://git-scm.com/install/) (v2.x or higher) and [Python](https://www.python.org/downloads/) (3.10+) are installed on your system, the steps for the setup are:
+
+1. **Clone the Repository**
    ```bash
    git clone https://github.com/itay-dvash/ebay-test-automation
    cd ebay-test-automation
    ```
 
-2. **Install Dependencies:**
+2. **Install Dependencies**
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Install Playwright Browsers:**
+3. **Install Playwright Browsers**
    ```bash
    playwright install
    ```
 
-## 🚀 How to Run the Tests
+## 🚀 How to Run
 
 **Run the Tests**
-   Execute E2E flow by Pytest from the root directory:
-   ```bash
-   pytest tests
-   ```
 
-**View the Report:**
-   Launch the Allure dashboard to view the results:
-   ```bash
-  allure serve reports/allure-results
-  ```
-  ** **Note:** You must have Allure installed on your system ([installation guide](https://allurereport.org/docs/v2/install/))
+Execute E2E flow by Pytest from the root directory:
+```bash
+pytest tests
+```
+
+**View the Report**
+
+Launch the Allure dashboard to view the results:
+```bash
+allure serve reports/allure-results
+```
+** **Note:** You must have Allure installed on your system ([installation guide](https://allurereport.org/docs/v2/install/))
