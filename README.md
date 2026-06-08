@@ -8,7 +8,7 @@ This is an automated testing project for eBay, developed as an assignment submis
 ├── data/                       # Test data and configuration files
 ├── docs/                       # The answers for section (5) of the assignment
 ├── logs/                       # Execution logs
-│   └── scrrenshots/            # Product screenshots
+│   └── screenshots/            # Product screenshots
 ├── reports/                    # Test run reports (e.g., Allure results)
 ├── src/
 │   ├── pages/
@@ -35,53 +35,62 @@ This is an automated testing project for eBay, developed as an assignment submis
 
 ## 🧠 Classes Overview
 
-### 1. `BasePage` <span style="font-size: 16px">&nbsp;**(** *src/pages/base_page.py* **)**</span>
+### 1. `BasePage`
+
 The parent class for all page objects. It initializes the Playwright `Page` instance and provides common helper methods (like waiting for elements, getting text, etc.) to avoid code duplication.
 
-### 2. `SearchPage` <span style="font-size: 16px">&nbsp;**(** *src/pages/search_page.py* **)**</span>
+### 2. `SearchPage`
+
 Handles searching for items and collecting their URLs based on constraints (like max price and quantity limit).
-* **Attributes:**
-  * `BASE_SEARCH_URL` - Base endpoint for eBay search
-* **Key Selectors:**
-  * `ERROR_INDICATION` - Target element to dynamically detect eBay error pages.
+
+**Attributes:**
+  * `BASE_SEARCH_URL` - Base endpoint for eBay search.
+
+**Key Selectors:**
+  * `ERROR_INDICATION` - Target element to dynamically detect eBay error page.
   * `RESULT_COUNT_SELECTOR` - Target locator for total search results count heading.
   * `ITEM_WRAPPER` - Main outer container for individual product cards.
-  * `PRICE_SELECTOR` - Product price element
-  * `LINK_SELECTOR` - Product link anchor within the card
-* **Main Method:**
+  * `PRICE_SELECTOR` - Product price element.
+  * `LINK_SELECTOR` - Product link anchor within the product card.
+
+**Primary Method:**
   * `search_items_by_name_under_price(query: str, max_price: float, limit: int = 5) -> list[str]`
 
     Queries the marketplace for items and compiles a list of valid product URLs
 
-### 3. `ProductPage` <span style="font-size: 16px">&nbsp;**(** *src/pages/product_page.py* **)**</span>
+### 3. `ProductPage`
 Manages interactions on the individual product page, including handling dropdowns for item variants and taking screenshots.
-* **Key Selectors:**
-  * `ADD_TO_CART_BUTTON` - The primary button to add the selected product to the cart.
+
+**Key Selectors:**
+  * `ADD_TO_CART_BUTTON` - The button to add the selected product to the cart.
   * `VARIANT_CONTAINERS` - Elements representing different product variations (like size or color).
   * `DROPDOWN_BUTTON` - The selector for opening a selection menu.
   * `LISTBOX_OPTIONS` - List of available options within an open dropdown.
-  * `INTERFERING_HEADER` - Element that might overlay or block the view during screenshot
-  * `SCRRENSHOT_DIV` - The specific container area to capture for screenshot
+  * `INTERFERING_HEADER` - Element that might overlay or block the view during screenshot.
+  * `SCRRENSHOT_DIV` - The specific container area to capture for screenshot.
 
-* **Main Method:**
+**Primary Method:**
   * `add_items_to_cart(urls: list[str]) -> None`
 
     Iterates over the collected URLs, handles necessary variant selections, and adds each item to the cart.
 
-### 4. `CartPage` <span style="font-size: 16px">&nbsp;**(** *src/pages/cart_page.py* **)**</span>
+### 4. `CartPage`
 Handles validations inside the shopping cart to ensure the logic worked correctly.
-* **Attributes:**
+
+**Attributes:**
   * `CART_URL` - Direct endpoint for eBay cart.
-* **Key Selectors:**
+
+**Key Selectors:**
   * `SUBTOTAL_SELECTOR` - The element containing the total price calculation in the cart.
-* **Main Method:**
+
+**Primary Method:**
   * `assert_cart_total_not_exceeds(budget_per_item: float, items_count: int) -> None`
 
     Calculates the expected maximum total and asserts that the actual cart subtotal does not exceed this amount.
 
-## ⚙️ Prerequisites
+## 🛠️ Quick Setup
 
-Assuming [Git](https://git-scm.com/install/) (v2.x or higher) and [Python](https://www.python.org/downloads/) (3.10+) are installed on your system, the steps for the setup are:
+Assuming [Git](https://git-scm.com/install/) (v2.x or higher) and [Python](https://www.python.org/downloads/) (3.10+) are installed on your system, the setup steps are as follows:
 
 1. **Clone the Repository**
    ```bash
@@ -89,19 +98,28 @@ Assuming [Git](https://git-scm.com/install/) (v2.x or higher) and [Python](https
    cd ebay-test-automation
    ```
 
-2. **Install Dependencies**
+2. **Create a Virtual Environment *(Optional)***
+   ```bash
+   python -m venv .venv
+   # Windows:
+   .venv\Scripts\activate
+   # macOS/Linux:
+   source .venv/bin/activate
+   ```
+
+3. **Install Dependencies**
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Install Playwright Browsers**
+4. **Install Playwright Browsers**
    ```bash
    playwright install
    ```
 
 ## 🚀 How to Run
 
-**Run the Tests**
+**Initiate the Tests**
 
 Execute E2E flow by Pytest from the root directory:
 ```bash
@@ -114,4 +132,4 @@ Launch the Allure dashboard to view the results:
 ```bash
 allure serve reports/allure-results
 ```
-** **Note:** You must have [Allure](https://allurereport.org/docs/v2/install/) installed on your system in order to view the results.
+** **Note:** [Allure](https://allurereport.org/docs/v2/install/) must be installed to access the dashboard.
