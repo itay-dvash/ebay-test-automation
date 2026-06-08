@@ -114,4 +114,4 @@ Launch the Allure dashboard to view the results:
 ```bash
 allure serve reports/allure-results
 ```
-** **Note:** You must have Allure installed on your system ([installation guide](https://allurereport.org/docs/v2/install/))
+** **Note:** You must have [Allure](https://allurereport.org/docs/v2/install/) installed on your system in order to view the results.
