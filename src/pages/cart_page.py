@@ -83,7 +83,7 @@ class CartPage(BasePage):
         try:
             assert total <= max_allowed_budget
             self.logger.info(
-                f"Assertion Passed! Cart total ({total}) is within the budget limit ({max_allowed_budget})."
+                f"Assertion Passed 🎉 Cart total ({total}) is within the budget limit ({max_allowed_budget})."
             )
         except AssertionError:
             self.logger.error(
