@@ -84,7 +84,7 @@ Handles validations inside the shopping cart to ensure the logic worked correctl
 1. **Clone the Repository:**
    ```bash
    git clone https://github.com/itay-dvash/ebay-test-automation
-   cd ebay-automation-project
+   cd ebay-test-automation
    ```
 
 2. **Install Dependencies:**
