@@ -59,7 +59,7 @@ class SearchPage(BasePage):
               # "_fcid": 100        # Feed Country ID of Israel
             }
             search_url = f"{self.BASE_SEARCH_URL}?{urlencode(query_params)}"
-            await self.page.goto(search_url, wait_until="domcontentloaded")
+            await self.page.goto(search_url)
 
             # Stop execution if eBay error page is detected
             error_locator = self.page.locator(self.ERROR_INDICATION)
