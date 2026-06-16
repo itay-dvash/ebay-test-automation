@@ -5,8 +5,8 @@ This is an automated testing project for eBay, developed as an assignment submis
 ## 📁 Project Structure
 
 ```text
-├── data/                       # Test data and configuration files
-├── docs/                       # The answers for section (5) of the assignment
+├── data/                       # Data files for testing
+├── docs/                       # The answers for section 5 of the assignment
 ├── logs/                       # Execution logs
 │   └── screenshots/            # Product screenshots
 ├── reports/                    # Test run reports (e.g., Allure results)
